@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Nick TikTok</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0d0d0d;
+    color: white;
+}
+
+header {
+    background: linear-gradient(90deg, red, black);
+    padding: 20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 30px;
+}
+
+.card {
+    background: #1a1a1a;
+    border: 1px solid red;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(255,0,0,0.3);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px red;
+}
+
+.price {
+    color: red;
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+button {
+    background: red;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: darkred;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #111;
+    margin-top: 20px;
+    font-size: 14px;
+    color: gray;
+}
+</style>
+</head>
+
+<body>
+
+<header>🔥 SHOP NICK TIKTOK UY TÍN 🔥</header>
+
+<div class="container">
+
+    <div class="card">
+        <h3>Nick 10K Follow</h3>
+        <p>✔ Có tương tác<br>✔ Đủ điều kiện LIVE</p>
+        <div class="price">150.000đ</div>
+        <button onclick="buy()">Mua Ngay</button>
+    </div>
+
+    <div class="card">
+        <h3>Nick 50K Follow</h3>
+        <p>✔ Tài khoản sạch<br>✔ Có video sẵn</p>
+        <div class="price">450.000đ</div>
+        <button onclick="buy()">Mua Ngay</button>
+    </div>
+
+    <div class="card">
+        <h3>Nick 100K Follow</h3>
+        <p>✔ Bật kiếm tiền<br>✔ Follow thật</p>
+        <div class="price">900.000đ</div>
+        <button onclick="buy()">Mua Ngay</button>
+    </div>
+
+</div>
+
+<footer>© 2026 Shop TikTok | Liên hệ Zalo: 0xxx xxx xxx</footer>
+
+<script>
+function buy() {
+    alert("Vui lòng liên hệ shop để mua nick!");
+}
+</script>
+
+</body>
+</html>
+
