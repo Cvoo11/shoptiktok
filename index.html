@@ -32,174 +32,65 @@ body {
 }
 
 @keyframes fadeOut {
-    to { opacity: 0; visibility: hidden; }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
 }
 
-/* HEADER EFFECT */
-header {
+/* MAIN CONTENT */
+.container {
     text-align: center;
-    padding: 30px;
-    font-size: 34px;
+    padding-top: 120px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.title {
+    font-size: 42px;
     font-weight: bold;
-    background: linear-gradient(90deg,#ff0000,#000);
-    text-shadow: 0 0 10px red,0 0 20px red;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     animation: glow 2s infinite alternate;
 }
 
 @keyframes glow {
-    from { text-shadow: 0 0 5px red; }
-    to { text-shadow: 0 0 25px red; }
+    from { text-shadow: 0 0 10px #ff00ff; }
+    to { text-shadow: 0 0 25px #00ffff; }
 }
 
-/* PARTICLE CANVAS */
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
-/* GRID */
-.container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-    gap: 30px;
-    padding: 50px;
-}
-
-/* CARD 3D */
-.card {
-    background: rgba(20,20,20,0.9);
-    padding: 25px;
-    border-radius: 15px;
-    text-align: center;
-    transition: transform 0.2s;
-    box-shadow: 0 0 15px rgba(255,0,0,0.2);
-}
-
-.card:hover {
-    box-shadow: 0 0 30px red;
-}
-
-/* PRICE */
-.price {
-    color: #ff4747;
-    font-size: 22px;
-    font-weight: bold;
-    margin: 12px 0;
-}
-
-/* BUTTON WAVE */
-button {
-    background: red;
+.btn {
+    margin-top: 30px;
+    padding: 15px 40px;
+    border-radius: 30px;
     border: none;
-    padding: 12px 20px;
-    color: white;
-    border-radius: 6px;
-    font-weight: bold;
+    font-size: 18px;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    color: white;
+    transition: 0.4s;
 }
 
-button::before {
-    content: "";
-    position: absolute;
-    width: 300%;
-    height: 300%;
-    background: radial-gradient(circle, rgba(255,255,255,0.4) 10%, transparent 10%);
-    top: -100%;
-    left: -100%;
-    transition: 0.5s;
-}
-
-button:hover::before {
-    top: 0;
-    left: 0;
-}
-
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px;
-    opacity: 0.6;
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #00ffff;
 }
 </style>
 </head>
 
 <body>
 
-<div id="intro">🔥 WELCOME TO VIP SHOP 🔥</div>
-<canvas id="bg"></canvas>
-
-<header>SHOP NICK TIKTOK CAO CẤP</header>
+<div id="intro">WELCOME</div>
 
 <div class="container">
-    <div class="card">
-        <h3>Nick 10K Follow</h3>
-        <p>✔ Có tương tác<br>✔ Đủ LIVE</p>
-        <div class="price">150.000đ</div>
-        <button onclick="buy()">Mua Ngay</button>
-    </div>
-
-    <div class="card">
-        <h3>Nick 50K Follow</h3>
-        <p>✔ Tài khoản sạch<br>✔ Có video</p>
-        <div class="price">450.000đ</div>
-        <button onclick="buy()">Mua Ngay</button>
-    </div>
-
-    <div class="card">
-        <h3>Nick 100K Follow</h3>
-        <p>✔ Bật kiếm tiền<br>✔ Follow thật</p>
-        <div class="price">900.000đ</div>
-        <button onclick="buy()">Mua Ngay</button>
-    </div>
+    <div class="title">SHOP NICK TIKTOK VIP</div>
+    <button class="btn">MUA NGAY</button>
 </div>
-
-<footer>© 2026 VIP TikTok Shop | Zalo: 0xxx xxx xxx</footer>
-
-<script>
-function buy(){
-    alert("Liên hệ Zalo shop để mua nhé!");
-}
-
-/* PARTICLES */
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-for(let i=0;i<80;i++){
-    particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2});
-}
-
-function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="red";
-    particles.forEach(p=>{
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fill();
-        p.y+=0.5;
-        if(p.y>canvas.height)p.y=0;
-    });
-    requestAnimationFrame(animate);
-}
-animate();
-
-/* CARD 3D TILT */
-document.querySelectorAll('.card').forEach(card=>{
-    card.addEventListener('mousemove',e=>{
-        let x = (e.offsetX/card.offsetWidth - 0.5)*20;
-        let y = (e.offsetY/card.offsetHeight - 0.5)*20;
-        card.style.transform=`rotateY(${x}deg) rotateX(${-y}deg)`;
-    });
-    card.addEventListener('mouseleave',()=>card.style.transform='rotateY(0) rotateX(0)');
-});
-</script>
 
 </body>
 </html>
-
